@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv ~/Development/ai-projects/nvim-dotnet ~/Development/ai-projects/nvim-dotnet-refactoring)",
+      "Bash(mv ~/Development/ai-projects/nvim-dotnet-refactoring/lua/nvim-dotnet ~/Development/ai-projects/nvim-dotnet-refactoring/lua/nvim-dotnet-refactoring)",
+      "Bash(mv ~/Development/ai-projects/nvim-dotnet-refactoring/plugin/nvim-dotnet.lua ~/Development/ai-projects/nvim-dotnet-refactoring/plugin/nvim-dotnet-refactoring.lua)",
+      "Bash(make test *)",
+      "Read(//Users/sauric/Development/ai-projects/nvim-dotnet-refactoring/**)",
+      "Bash(nvim --headless *)"
+    ]
+  }
+}
