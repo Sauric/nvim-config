@@ -4,5 +4,4 @@ require("snacks").picker.sources.files.exclude = {
   "**/bin/*",
   "**/obj/*",
 }
-
 return {}
