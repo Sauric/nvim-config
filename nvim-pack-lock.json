@@ -4,6 +4,22 @@
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "conform.nvim": {
+      "rev": "1c4a1537db60ba05e61360db8b674158c9cf4169",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "easy-dotnet.nvim": {
+      "rev": "87064e3b986ee0dc4474759aa2b0b018eef9c954",
+      "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "eaa34887d444cb002e1b165fac399ae4bbc771f7",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
+      "src": "https://github.com/williamboman/mason.nvim"
+    },
     "mini.nvim": {
       "rev": "a5fda91040763cf9ad70bdce1c656b0f4ba1d16e",
       "src": "https://github.com/nvim-mini/mini.nvim"

@@ -1,35 +1,28 @@
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.g.mapleader = " "
+-- Leader must be set before lazy loads any plugin
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader      = " "
+vim.g.maplocalleader = " "
 
-vim.pack.add({ 
-	'https://github.com/nvim-mini/mini.nvim' ,
-	'https://github.com/nvim-treesitter/nvim-treesitter',
-	'https://github.com/nvim-lua/plenary.nvim',
-	'https://github.com/nvim-telescope/telescope.nvim',
-	'https://github.com/folke/which-key.nvim',
-	'https://github.com/neovim/nvim-lspconfig',
-	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+-- Load options early (before plugins)
+require("config.options")
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	vim.fn.system({
+		"git", "clone", "--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Load plugins (lazy auto-imports everything in lua/plugins/)
+require("lazy").setup("plugins", {
+	ui = { border = "rounded" },
 })
-vim.cmd.colorscheme("catppuccin-mocha")
-require('mini.basics').setup()
-require('mini.surround').setup()
-require('mini.icons').setup()
-require('mini.files').setup({
-  windows = {
-    -- Adjust transparency if needed (0-100)
-    winblend = 100,
-  },
-})
-require('mini.completion').setup()
-require('mini.snippets').setup()
-require('which-key').setup({
-	preset = "modern",
-      defaults = {},
-})
-require('nvim-treesitter').setup()
 
-vim.lsp.enable({ 'lua_ls' })
-
-vim.keymap.set({'n', 'v'}, '<leader>?', function() require("which-key").show({ global = false}) end )
-vim.keymap.set({'n'}, '<leader>e', function() require('mini.files').open() end, { desc = 'Opens mini.files' })
-
+-- Load keymaps and autocmds after plugins are set up
+require("config.keymaps")
+require("config.autocmds")
