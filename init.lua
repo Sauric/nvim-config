@@ -1,2 +1,6 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("vim._core.ui2").enable({})
+
+require("options")
+require("keymaps")
+require("mini-plugin")
+require("dotnet-plugin")
