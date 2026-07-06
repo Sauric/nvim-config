@@ -1,4 +1,6 @@
 vim.g.netrw_banner = 0
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -32,7 +34,7 @@ vim.opt.scrolloff = 8
 
 vim.opt.colorcolumn = "0"
 vim.opt.signcolumn = "yes"
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -41,3 +43,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.hl.on_yank()
     end,
 })
+
+vim.opt.winborder = 'rounded'
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282c34" })

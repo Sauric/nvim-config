@@ -1,7 +1,24 @@
 vim.pack.add({"https://github.com/nvim-mini/mini.nvim"})
 
+-- mini icons ----
+require("mini.icons").setup()
+
+-- Statusline
+require('mini.statusline').setup()
+
+-- Basic Appearance (Borders, Signcolumn, etc.)
+require('mini.basics').setup({
+  options = {
+    win_borders = 'double' -- Change to 'double' or 'solid' as desired
+  }
+})
+
 -- mini files ----
-require("mini.files").setup({})
+require("mini.files").setup({
+  options = {
+    use_as_default_explorer = false,  -- Prevent auto-open on startup
+  },
+})
 
 vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini file explorer" })
 vim.keymap.set("n", "<leader>-", function()
@@ -42,13 +59,20 @@ local MiniExtra = require("mini.extra")
 MiniPick.setup()
 MiniExtra.setup()
 
--- keymaps
-vim.keymap.set("n", "<leader>pf", function() MiniPick.builtin.files() end, { desc = "Mini File Picker" })
-vim.keymap.set("n", "<leader>ps", function() MiniPick.builtin.grep({ pattern = vim.fn.expand("<cword>") }) end, { desc = "Grep word/Search word" })
-vim.keymap.set("n", "<leader>vh", function() MiniPick.builtin.help() end, { desc = "Mini Help" })
+-- opens mini.picker on startup
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    require("mini.pick").builtin.files()
+  end,
+})
 
-vim.keymap.set("n", "<leader>xx", function() MiniExtra.pickers.diagnostic() end, { desc = "Mini Picker Diagnostics" })
-vim.keymap.set("n", "<leader>pk", function() MiniExtra.pickers.keymaps() end, { desc = 'Search keymaps' })
+-- keymaps
+vim.keymap.set("n", "<leader>pf", function() require("mini.pick").builtin.files() end, { desc = "Mini File Picker" })
+vim.keymap.set("n", "<leader>ps", function() require("mini.pick").builtin.grep({ pattern = vim.fn.expand("<cword>") }) end, { desc = "Grep word/Search word" })
+vim.keymap.set("n", "<leader>vh", function() require("mini.pick").builtin.help() end, { desc = "Mini Help" })
+
+vim.keymap.set("n", "<leader>xx", function() require("mini.pick").pickers.diagnostic() end, { desc = "Mini Picker Diagnostics" })
+vim.keymap.set("n", "<leader>pk", function() require("mini.pick").pickers.keymaps() end, { desc = 'Search keymaps' })
 
 --- mini completions --- 
 require("mini.completion").setup({

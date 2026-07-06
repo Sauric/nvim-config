@@ -1,5 +1,11 @@
 vim.g.mapleader = " "
 
+-- Normal mode: Save with Ctrl + S
+vim.keymap.set('n', '<C-s>', ':update<CR>')
+
+-- Insert mode: Save with Ctrl + S and return to Insert mode
+vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>a')
+
 vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
