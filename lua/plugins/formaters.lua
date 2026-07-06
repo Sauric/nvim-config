@@ -27,5 +27,5 @@ local opts = {
   },
 }
 
-require("conform").format(opts)
+require("conform").setup(opts)
 return {}
