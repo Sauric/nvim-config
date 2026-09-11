@@ -19,10 +19,15 @@ return {
 		},
 	},
 	{
+		"shaunsingh/nord.nvim",
+		priority = 1000,
+	},
+	{ "ellisonleao/gruvbox.nvim" },
+	{
 
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "kanagawa-dragon",
+			colorscheme = "gruvbox",
 		},
 	},
 }
